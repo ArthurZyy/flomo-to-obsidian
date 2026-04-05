@@ -36,8 +36,8 @@ export class FlomoImporter {
 
         for (const [idx, memo] of flomo.memos.entries()) {
 
-            const memoSubDir = `${this.config["flomoTarget"]}/${this.config["memoTarget"]}/${memo["date"]}`;
-            const memoFilePath = margeByDate ? `${memoSubDir}/memo@${memo["date"]}.md` : `${memoSubDir}/memo@${memo["title"]}_${flomo.memos.length - idx}.md`;
+            const memoSubDir = `${this.config["flomoTarget"]}/${this.config["memoTarget"]}/${memo["date"].slice(0, 7)}`;
+            const memoFilePath = margeByDate ? `${memoSubDir}/${memo["date"]}.md` : `${memoSubDir}/${memo["title"]}_${flomo.memos.length - idx}.md`;
 
             await fs.mkdirp(`${this.config["baseDir"]}/${memoSubDir}`);
             const content = (() => {

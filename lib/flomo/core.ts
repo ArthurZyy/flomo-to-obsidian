@@ -76,10 +76,24 @@ export class FlomoCore {
 
             const content = extractContent(contentBody) + "\n" + extractContent(contentFile);
 
+            const lines = content.split("\n").filter(line => !/^\s*$/.test(line) || line == "");
+            const firstLine = lines[0];
+            const tags = firstLine.match(/#\S+/g)?.map(tag => tag.slice(1)) || [];
+            const contentText = `---
+content: ${firstLine.replace(/#\S+/g, '').replace(/\*\*/g, '').trim()}
+created: ${dateTime.split(" ")[0]} 
+tags: 
+  ${tags.map(tag => `- ${tag}`).join("\n  ")}
+---
+
+${"📅 [[" + dateTime.split(" ")[0] + "]]"+ " " + dateTime.split(" ")[1]}
+${lines.slice(1).join("\n")}
+`
+
             res.push({
                 "title": title,
                 "date": dateTime.split(" ")[0],
-                "content": "📅 [[" + dateTime.split(" ")[0] + "]]"+ " " + dateTime.split(" ")[1] + "\n\n" + content,
+                "content": contentText,
             })
 
         });
