@@ -52,5 +52,6 @@
     "showdown": "^2.1.0",
     "turndown": "^7.1.2",
     "uuid": "^9.0.0"
-  }
+  },
+  "__npminstall_done": false
 }

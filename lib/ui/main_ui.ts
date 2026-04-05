@@ -87,9 +87,19 @@ export class MainUI extends Modal {
 
         const fileLocContol: HTMLInputElement = contentEl.createEl("input", { type: "file", cls: "uploadbox" })
         fileLocContol.setAttr("accept", ".zip");
-        fileLocContol.onchange = (ev) => {
-            this.rawPath = ev.currentTarget.files[0]["path"];
-            console.log(this.rawPath)
+        fileLocContol.onchange = async (ev) => {
+            const file = ev.currentTarget.files[0];
+            if (file) {
+                // Copy selected file to cache directory
+                const cacheDir = path.join(os.homedir(), ".flomo", "cache", "playwright");
+                await fs.mkdirp(cacheDir);
+                const cacheFilePath = path.join(cacheDir, "flomo_export.zip");
+                const arrayBuffer = await file.arrayBuffer();
+                const buffer = Buffer.from(arrayBuffer);
+                await fs.writeFile(cacheFilePath, buffer);
+                this.rawPath = cacheFilePath;
+                console.log("File copied to:", this.rawPath);
+            }
         };
 
         contentEl.createEl("br");
