@@ -8,7 +8,6 @@ import * as parse5 from "parse5"
 
 import { FlomoCore } from './core';
 import { generateMoments } from '../obIntegration/moments';
-import { generateCanvas } from '../obIntegration/canvas';
 
 import { FLOMO_CACHE_LOC } from './const'
 //const FLOMO_CACHE_LOC = path.join(os.homedir(), "/.flomo/cache/");
@@ -104,13 +103,7 @@ export class FlomoImporter {
         // 5. Ob Intergations
         // If Generate Moments
         if (this.config["optionsMoments"] != "skip") {
-            await generateMoments(app, memos, this.config);
-        }
-
-
-        // If Generate Canvas
-        if (this.config["optionsCanvas"] != "skip") {
-            await generateCanvas(app, memos, this.config);
+            await generateMoments(this.app, memos, this.config);
         }
 
 

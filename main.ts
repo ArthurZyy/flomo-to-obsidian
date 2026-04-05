@@ -6,18 +6,14 @@ interface MyPluginSettings {
 	flomoTarget: string,
 	memoTarget: string,
 	optionsMoments: string,
-	optionsCanvas: string,
-	expOptionAllowbilink: boolean,
-	canvasSize: string
+	expOptionAllowbilink: boolean
 }
 
 const DEFAULT_SETTINGS: MyPluginSettings = {
 	flomoTarget: 'flomo',
 	memoTarget: 'memos',
 	optionsMoments: "copy_with_link",
-	optionsCanvas: "copy_with_content",
-	expOptionAllowbilink: true,
-	canvasSize: 'M'
+	expOptionAllowbilink: true
 }
 
 export default class FlomoImporterPlugin extends Plugin {

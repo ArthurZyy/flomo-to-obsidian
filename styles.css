@@ -31,8 +31,3 @@ If your plugin does not need CSS, delete this file.
     vertical-align: middle;
 }
 
-.canvasOptionBlock {
-    text-align: right;
-    vertical-align: middle;
-    margin: 0 0 10px;
-}
