@@ -200,12 +200,7 @@ export class MainUI extends Modal {
         };
 
 
-        const mergeByDate = createExpOpt(contentEl, "Merge memos by date")
 
-        mergeByDate.checked = this.plugin.settings.mergeByDate;
-        mergeByDate.onchange = (ev) => {
-            this.plugin.settings.mergeByDate = ev.currentTarget.checked;
-        };
 
 
 

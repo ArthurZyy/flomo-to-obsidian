@@ -8,8 +8,7 @@ interface MyPluginSettings {
 	optionsMoments: string,
 	optionsCanvas: string,
 	expOptionAllowbilink: boolean,
-	canvasSize: string,
-	mergeByDate: boolean
+	canvasSize: string
 }
 
 const DEFAULT_SETTINGS: MyPluginSettings = {
@@ -18,8 +17,7 @@ const DEFAULT_SETTINGS: MyPluginSettings = {
 	optionsMoments: "copy_with_link",
 	optionsCanvas: "copy_with_content",
 	expOptionAllowbilink: true,
-	canvasSize: 'M',
-	mergeByDate: false
+	canvasSize: 'M'
 }
 
 export default class FlomoImporterPlugin extends Plugin {

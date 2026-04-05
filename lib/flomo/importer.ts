@@ -32,12 +32,11 @@ export class FlomoImporter {
 
     private async importMemos(flomo: FlomoCore): Promise<FlomoCore> {
         const allowBilink: boolean = this.config["expOptionAllowbilink"];
-        const margeByDate: boolean = this.config["mergeByDate"];
 
         for (const [idx, memo] of flomo.memos.entries()) {
 
             const memoSubDir = `${this.config["flomoTarget"]}/${this.config["memoTarget"]}/${memo["date"].slice(0, 7)}`;
-            const memoFilePath = margeByDate ? `${memoSubDir}/${memo["date"]}.md` : `${memoSubDir}/${memo["title"]}.md`;
+            const memoFilePath = `${memoSubDir}/${memo["title"]}.md`;
 
             await fs.mkdirp(`${this.config["baseDir"]}/${memoSubDir}`);
             const content = (() => {
